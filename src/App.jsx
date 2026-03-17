@@ -27,7 +27,7 @@ function App() {
     localStorage.setItem('fairshare_expenses', JSON.stringify(expenses));
   }, [expenses]);
 
-  // 4. The Grand Reset Function
+  // 4. The Reset Function
   const handleReset = () => {
     if (window.confirm("Are you sure you want to clear all data? This will wipe all debts and cannot be undone.")) {
       setMembers([]);
@@ -39,7 +39,6 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Header section updated to include the Reset button */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
         <h1 style={{ marginBottom: 0 }}>FairShare Splitter</h1>
         <button 

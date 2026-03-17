@@ -9,12 +9,11 @@ function SquadList({ members, setMembers }) {
     // Prevent adding blank names or duplicates
     if (trimmedName && !members.includes(trimmedName)) {
       setMembers([...members, trimmedName]);
-      setNewName(''); // Clear the input field after adding
+      setNewName(''); 
     }
   };
 
   const handleKeyPress = (e) => {
-    // Allows pressing 'Enter' to add a member quickly
     if (e.key === 'Enter') {
       handleAddMember();
     }
