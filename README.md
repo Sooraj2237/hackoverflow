@@ -35,7 +35,7 @@ Instead of tracking who specifically paid for whom on individual receipts, the e
 
 **1. Clone the repository:**
    ```bash
-   git clone [https://github.com/yourusername/fairshare-splitter.git](https://github.com/yourusername/fairshare-splitter.git)
+   git clone "https://github.com/<your_username>/hackoverflow.git"
    ```
 
 **2. Navigate to the directory:**
