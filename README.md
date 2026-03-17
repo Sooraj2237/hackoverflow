@@ -40,12 +40,16 @@ Instead of tracking who specifically paid for whom on individual receipts, the e
 
 **2. Navigate to the directory:**
 ```bash
-cd fairshare-splitter
+cd hackoverflow
 ```
 
 **3. Install dependencies:**
 ```bash
 npm install
+```
+or
+```bash
+npm i
 ```
 
 **4. Start the development server:**
