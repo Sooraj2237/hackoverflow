@@ -80,7 +80,7 @@ function ExpenseEntry({ members, expenses, setExpenses }) {
       
       <input 
         type="text" 
-        placeholder="What was it for? (e.g., Pizza, Cab)" 
+        placeholder="What was it for?" 
         value={description} 
         onChange={(e) => setDescription(e.target.value)} 
       />
