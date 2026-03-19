@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 
 function SquadList({ members, setMembers }) {
-  // Local state to track the text inside the input box
   const [newName, setNewName] = useState('');
 
   const handleAddMember = () => {
     const trimmedName = newName.trim();
-    // Prevent adding blank names or duplicates
     if (trimmedName && !members.includes(trimmedName)) {
       setMembers([...members, trimmedName]);
       setNewName(''); 

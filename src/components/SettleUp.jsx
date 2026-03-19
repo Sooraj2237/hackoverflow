@@ -4,20 +4,16 @@ function SettleUp({ members, expenses }) {
   const [transactions, setTransactions] = useState([]);
 
   const calculateDebts = () => {
-    // 1. Calculate the net balance for each person
     const balances = {};
     members.forEach(m => balances[m] = 0);
 
     expenses.forEach(expense => {
-      // The person who paid gets a positive balance (they are owed money)
       balances[expense.payer] += expense.amount;
-      // Everyone's share reduces their balance (they owe money)
       for (const person in expense.shares) {
         balances[person] -= expense.shares[person];
       }
     });
 
-    // 2. Separate into debtors (owe money) and creditors (owed money)
     const debtors = [];
     const creditors = [];
 
@@ -26,14 +22,12 @@ function SettleUp({ members, expenses }) {
       else if (balances[person] > 0.01) creditors.push({ name: person, amount: balances[person] });
     }
 
-    // Sort descending to settle the largest debts first
     debtors.sort((a, b) => b.amount - a.amount);
     creditors.sort((a, b) => b.amount - a.amount);
 
-    // 3. Match them up to minimize the number of transactions
     const results = [];
-    let i = 0; // debtors index
-    let j = 0; // creditors index
+    let i = 0; 
+    let j = 0; 
 
     while (i < debtors.length && j < creditors.length) {
       const debtor = debtors[i];

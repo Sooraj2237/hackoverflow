@@ -6,7 +6,6 @@ import SettleUp from './components/SettleUp';
 import './App.css';
 
 function App() {
-  // 1. Initialize state from localStorage, or default to empty arrays
   const [members, setMembers] = useState(() => {
     const savedMembers = localStorage.getItem('fairshare_members');
     return savedMembers ? JSON.parse(savedMembers) : [];
@@ -17,17 +16,14 @@ function App() {
     return savedExpenses ? JSON.parse(savedExpenses) : [];
   });
 
-  // 2. Auto-save to localStorage whenever members change
   useEffect(() => {
     localStorage.setItem('fairshare_members', JSON.stringify(members));
   }, [members]);
 
-  // 3. Auto-save to localStorage whenever expenses change
   useEffect(() => {
     localStorage.setItem('fairshare_expenses', JSON.stringify(expenses));
   }, [expenses]);
 
-  // 4. The Reset Function
   const handleReset = () => {
     if (window.confirm("Are you sure you want to clear all data? This will wipe all debts and cannot be undone.")) {
       setMembers([]);

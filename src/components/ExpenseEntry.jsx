@@ -7,7 +7,6 @@ function ExpenseEntry({ members, expenses, setExpenses }) {
   const [splitMethod, setSplitMethod] = useState('equal');
   const [manualShares, setManualShares] = useState({});
 
-  // Ensure the default payer is the first person in the squad list
   useEffect(() => {
     if (members.length > 0 && !members.includes(payer)) {
       setPayer(members[0]);
@@ -31,26 +30,22 @@ function ExpenseEntry({ members, expenses, setExpenses }) {
     let finalShares = {};
 
     if (splitMethod === 'equal') {
-      // Split equally by default
       const splitAmount = totalAmount / members.length;
       members.forEach(m => {
         finalShares[m] = splitAmount;
       });
     } else {
-      // Handle the manual split logic
       const currentSum = Object.values(manualShares).reduce((acc, curr) => acc + curr, 0);
       if (currentSum !== totalAmount) {
         alert(`The manual shares (${currentSum}) must exactly equal the total amount (${totalAmount})!`);
         return;
       }
       finalShares = { ...manualShares };
-      // Ensure all members are accounted for in the math, even if they owe 0
       members.forEach(m => {
          if(!finalShares[m]) finalShares[m] = 0;
       });
     }
 
-    // Package the expense data
     const newExpense = {
       id: Date.now(),
       description,
@@ -60,17 +55,14 @@ function ExpenseEntry({ members, expenses, setExpenses }) {
       shares: finalShares
     };
 
-    // Push to the global brain
     setExpenses([...expenses, newExpense]);
     
-    // Reset the form for the next entry
     setDescription('');
     setAmount('');
     setSplitMethod('equal');
     setManualShares({});
   };
 
-  // If the squad is empty, don't show the form yet
   if (members.length === 0) {
     return (
       <div className="panel">

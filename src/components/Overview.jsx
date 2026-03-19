@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Overview({ members, expenses }) {
-  // Calculate how much each person paid vs their actual share
   const balances = members.map(member => {
     const totalPaid = expenses
       .filter(e => e.payer === member)
@@ -18,7 +17,7 @@ function Overview({ members, expenses }) {
   });
 
   if (members.length === 0) {
-    return null; // Hide the overview if there are no members
+    return null;
   }
 
   return (
