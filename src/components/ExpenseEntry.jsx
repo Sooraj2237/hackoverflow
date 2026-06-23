@@ -89,7 +89,12 @@ function ExpenseEntry({ members, expenses, setExpenses }) {
         type="number" 
         placeholder="Total Amount (₹)" 
         value={amount} 
-        onChange={(e) => setAmount(e.target.value)} 
+        onChange={(e) => {
+          const val = e.target.value;
+          if (val === '' || Number(val) > 0) {
+          setAmount(val);
+          }
+        }} 
       />
       
       <div style={{ marginBottom: '15px' }}>
